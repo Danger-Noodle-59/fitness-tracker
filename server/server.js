@@ -14,7 +14,7 @@ const userController = require('./controllers/userController')
 const statsController = require('./controllers/statsController')
 
 // const mongoURI = process.env.DB_URI
-const mongoURI = 'mongodb+srv://jmabagat:WHH17fuJLbmCmqKo@cluster0.k6q6azw.mongodb.net/'
+const mongoURI = 'mongodb+srv://asokolov5924:Bballer59@mongod.jqlyc2c.mongodb.net/'
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
