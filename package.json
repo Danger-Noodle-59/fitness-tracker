@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Fitness-Tracker-WCRI59/fitness-tracker#readme",
   "dependencies": {
+    "chart.js": "^4.3.2",
     "axios": "^1.4.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
