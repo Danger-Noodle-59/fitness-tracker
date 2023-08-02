@@ -75,7 +75,14 @@ const Test = () => {
         };
     }, []);
     return (
+      <div>
+
         <canvas ref={canvasRef} />
+        <button className='weight-date-input' id='update-weight' >UPDATE WEIGHT</button>
+        <input  className='weight-input' type="text" placeholder='Weight... '></input>
+        <input  className='date-input' type="text" placeholder='Date... '></input>
+      </div>
+       
     );
 }
 export default Test;
