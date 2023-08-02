@@ -11,10 +11,16 @@ const userSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: {type: String, required: true},
   age: { type: Number, required: true },
-  height: Number,
+  height: { type: Number, required: true },
   weight: { type: Number, required: true },
   sex: { type: String, required: true },
   goal: { type: Number, required: true },
+  data: [
+    {
+      date: { type: Date, required: true },
+      weight: { type: Number, required: true },
+    }
+  ]
   // userStats_id: {
   //   type: Schema.Types.ObjectId,
   //   ref: 'stats'
@@ -32,7 +38,7 @@ const statsSchema = new Schema({
   height: Number,
   weight: { type: Number, required: true },
   sex: { type: String, required: true },
-  targetWeight: { type: Number, required: true },
+  targetWeight: { type: Number, required: true }
 });
 
 const Stats = mongoose.model('stats', statsSchema);
