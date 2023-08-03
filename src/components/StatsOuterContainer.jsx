@@ -51,5 +51,4 @@ const StatsOuterContainer = ({setCalories, setAnimate, setDays, setActivityLevel
     );
 }
 
-
 export default StatsOuterContainer

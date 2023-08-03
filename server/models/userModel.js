@@ -11,36 +11,38 @@ const userSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: {type: String, required: true},
   age: { type: Number, required: true },
-  height: Number,
+  height: { type: Number, required: true },
   weight: { type: Number, required: true },
   sex: { type: String, required: true },
   goal: { type: Number, required: true },
-  // userStats_id: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'stats'
-  // },
-  // stats: statsSchema
+  data: [
+    {
+      date: { type: Date, required: true },
+      weight: { type: Number, required: true },
+    }
+  ]
 });
 
 // stats: [ statsSchema ]
 
-const User = mongoose.model('user', userSchema)
+// const User = mongoose.model('user', statsSchema)
 
 // sets a schema for the user stats
 
-const statsSchema = new Schema({
-  height: Number,
-  weight: { type: Number, required: true },
-  sex: { type: String, required: true },
-  targetWeight: { type: Number, required: true },
-});
+// const statsSchema = new Schema({
+//   height: Number,
+//   weight: { type: Number, required: true },
+//   sex: { type: String, required: true },
+//   targetWeight: { type: Number, required: true }
+// });
 
-const Stats = mongoose.model('stats', statsSchema);
+// const Stats = mongoose.model('stats', statsSchema);
 
 
 // create potential schema for progress / goal tracking
 
-module.exports = {
-  User,
-  Stats,
-}
+module.exports = mongoose.model('user', userSchema);
+// {
+//   User,
+//   Stats,
+// }
