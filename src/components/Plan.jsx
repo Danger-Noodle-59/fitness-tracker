@@ -1,8 +1,11 @@
 import React from 'react'
 
-const Plan = () => {
+const Plan = ({gptResponse}) => {
   return (
-    <div>Plan</div>
+    <>
+      {console.log('gptResponse', gptResponse)}
+      <div>{gptResponse}</div>
+    </>
   )
 }
 

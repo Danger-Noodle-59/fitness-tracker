@@ -10,7 +10,7 @@ const GamePlan = ({age, sex, weight, goal, days, activityLevel}) => {
 
     return (
         <Routes>
-            <Route path={'/'} element={<SelectPlanType setPlanType={setPlanType}/>} />
+            <Route path={'/'} element={gptResponse ? <Plan gptResponse={gptResponse} /> : <SelectPlanType setPlanType={setPlanType}/>} />
             <Route path={'/planForm'} element={<GamePlanForm
                 planType={planType} 
                 setGptResponse={setGptResponse}
@@ -20,7 +20,7 @@ const GamePlan = ({age, sex, weight, goal, days, activityLevel}) => {
                 goal={goal}
                 days={days}
                 activityLevel={activityLevel} />} />
-            <Route path={'/plan'} element={<Plan gptResponse={gptResponse} />} />
+            {/* <Route path={'/plan'} element={<Plan gptResponse={gptResponse} />} /> */}
             {/* <Route path={'/diet-plan'} element={<DietPlan />} /> */}
         </Routes>
         
