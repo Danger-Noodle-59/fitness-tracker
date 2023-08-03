@@ -62,13 +62,18 @@ app.get('/main',
   res.status(200).json(res.locals.userInfo)
  })
 
+ app.patch('/logs', statsController.updateLogs, (req, res) => {
+  res.sendStatus(200)
+ })
+
+
 app.delete('/logout', sessionController.endSession, cookieController.removeSSIDCookie, (req, res) => {
   res.status(200).json('Session has ended');
 })
 
 app.post('/gpt', async (req, res, next) => {
   console.log('in the gpt');
-
+  console.log("body message: ", req.body.message);
   try {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -76,7 +81,8 @@ app.post('/gpt', async (req, res, next) => {
        {role: "user", content: req.body.message}
       ],
     });
-    console.log(completion.data.choices[0].message);
+    console.log('hello')
+    // console.log(completion.data.choices[0].message);
     res.locals.message = completion.data.choices[0].message;
     next();
   } catch (err) {

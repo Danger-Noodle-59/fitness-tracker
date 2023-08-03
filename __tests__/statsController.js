@@ -1,13 +1,13 @@
 const statsController = require('../server/controllers/statsController');
-const { User } = require('../server/models/userModel');
+const User = require('../server/models/userModel');
 const httpMocks = require('node-mocks-http'); // A package to mock Express.js 'req' and 'res'
 const { createRequest, createResponse } = httpMocks;
 
 jest.mock('../server/models/userModel', () => ({
-  User: {
+
     findByIdAndUpdate: jest.fn(),
     findById: jest.fn(),
-  },
+
 }));
 
 describe('statsController', () => {
@@ -61,4 +61,22 @@ describe('statsController', () => {
         });
 
     });
+
+    describe('updateLogs', () => {
+        it('should update the logs of a user', async () => {
+          req.cookies = { ssid: 'test_id' };
+          req.body = { data: 'new data' };
+          User.findByIdAndUpdate.mockResolvedValueOnce({});
+
+          await statsController.updateLogs(req, res, next);
+
+          expect(User.findByIdAndUpdate).toHaveBeenCalledWith(
+            { _id: 'test_id' },
+            { data: 'new data' },
+            { new: true }
+          );
+          expect(next).toHaveBeenCalled();
+        });
+      });
+
 });

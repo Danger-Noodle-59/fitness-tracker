@@ -15,8 +15,11 @@ const MainContainer = ({ fieldsFilled,
     setDays, 
     setActivityLevel, 
     weight, 
-    goal }) => {
-
+    goal,
+    gainWeight,
+    activityLevel,
+    dailyGainCalories, 
+    negativeCalories }) => {
     return (
         <>
             <StatsOuterContainer setCalories={setCalories} 
@@ -25,12 +28,16 @@ const MainContainer = ({ fieldsFilled,
                 setActivityLevel={setActivityLevel}
                 weight={weight}
                 goal={goal}
+                activityLevel={activityLevel}
                 />
             <CalcContainer fieldsFilled={fieldsFilled}
                 animate={animate}
                 displayCalculate={displayCalculate}
                 calculate={calculate}
                 minutes={minutes}
+                gainWeight={gainWeight}
+                dailyGainCalories = {dailyGainCalories}
+                negativeCalories={negativeCalories}
                 />  
         </>
     )
