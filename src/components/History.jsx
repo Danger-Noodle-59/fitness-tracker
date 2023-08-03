@@ -1,11 +1,14 @@
 import React from 'react';
+import Test from './Test';
 
 
 const History = () => {
 
-
     return (
-        <div>sdafdfsd</div>
+        <>
+            <Test />
+            <div>fasdfdsf</div>
+        </>
 
     )
 }

@@ -22,14 +22,18 @@ const Dashboard = () => {
   const [goalInput, setGoalInput] = useState('');
   const [calories, setCalories] = useState(0);
   const [days, setDays] = useState(0);
-  const [activityLevel, setActivityLevel] = useState(0);
+  const [activityLevel, setActivityLevel] = useState(2);
   const [calculate, setCalculate] = useState('');
   const [fieldsFilled, setFieldsFilled] = useState(false);
   const [displayCalculate, setDisplayCalculate] = useState(false);
   const [updateWeightGoal, setUpdateWeightGoal] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [minutes, setMinutes] = useState(0);
+  const [negativeCalories, setNegativeCalories] = useState(false);
   const navigate = useNavigate();
+  const gainWeight = goal > weight ? true : false;
+  let dailyGainCalories;
+  let dailyBurnCalories;
 
   useEffect(() => {
     fetch('/stats').then(response => response.json()).then(data => {
@@ -96,7 +100,7 @@ const Dashboard = () => {
   }
 
   const areFieldsFilled = () => {
-    if (!calories || !days || !activityLevel) {
+    if (!calories || !days || !activityLevel || activityLevel < 1 || activityLevel > 5) {
       setDisplayCalculate(false);
 
     }
@@ -136,11 +140,13 @@ const Dashboard = () => {
         activity = 1.4;
     }
     console.log(activity);
-    let dailyBurnCalories = Math.floor(dailyWeightLossCalories + Number(calories) - metabolicRate * activity);
-    if (dailyBurnCalories < 0) {
-      dailyBurnCalories = 0;
+    dailyBurnCalories = Math.floor(dailyWeightLossCalories + Number(calories) - metabolicRate * activity);
+    if (gainWeight) {
+      dailyBurnCalories = -dailyBurnCalories;
+      dailyGainCalories = dailyBurnCalories
     }
-
+    dailyBurnCalories < 0 ? setNegativeCalories(true) : setNegativeCalories(false);
+    dailyBurnCalories = Math.abs(dailyBurnCalories);
 
     const minutes = dailyBurnCalories / (3.5 * weight * 0.45 / 200);
     setMinutes([Math.floor(minutes / 11.5).toLocaleString("en-US"), Math.floor(minutes / 2).toLocaleString("en-US"), Math.floor(minutes / 8).toLocaleString("en-US")]);
@@ -210,6 +216,10 @@ const Dashboard = () => {
               displayCalculate={displayCalculate}
               calculate={calculate}
               minutes={minutes}
+              gainWeight={gainWeight}
+              activityLevel={activityLevel}
+              dailyGainCalories = {dailyGainCalories}
+              negativeCalories = {negativeCalories}
             />} />
           <Route path='/history' element={
             <History 
@@ -217,8 +227,14 @@ const Dashboard = () => {
           <Route path='/pics' element={
             <Pics
           />} />
-          <Route path='/gameplan' element={
+          <Route path='/gameplan/*' element={
             <GamePlan
+              age={age}
+              sex={sex}
+              weight={weight}
+              goal={goal}
+              days={days}
+              activityLevel={activityLevel}
           />} />
         </Routes>
       </div>
