@@ -62,6 +62,11 @@ app.get('/main',
   res.status(200).json(res.locals.userInfo)
  })
 
+ app.patch('/logs', statsController.updateLogs, (req, res) => {
+  res.sendStatus(200)
+ })
+
+
 app.delete('/logout', sessionController.endSession, cookieController.removeSSIDCookie, (req, res) => {
   res.status(200).json('Session has ended');
 })
