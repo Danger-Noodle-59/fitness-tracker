@@ -1,34 +1,4 @@
-import React, { useRef, useEffect } from 'react';
-import Chart from 'chart.js/auto';
-
-// const chartLabels = ['January', 'February', 'March', 'April', 'May'];
-// const chartData = [10, 20, 15, 25, 30];
-
-const data = {
-  user: 'V', // userID
-  sex: { type: String, required: true },
-  targetWeight: { type: Number, required: true },
-  height: Number,
-  data: [ 
-    { date: '7/20', weight: 150 },
-    { date: '7/21', weight: 149 },
-    { date: '7/22', weight: 152 },
-    { date: '7/23', weight: 151 },
-    { date: '7/24', weight: 154 },
-    { date: '7/25', weight: 153 },
-    { date: '7/26', weight: 156 },
-    { date: '7/27', weight: 155 },
-    { date: '7/28', weight: 158 },
-    { date: '7/29', weight: 157 } 
-  ]
-};
-
-const chartLabels = getData(data, 'date');
-const chartData = getData(data, 'weight');
-
-function getData(collectionName, stringForKeyName) {
-  return collectionName.data.map( x => x[stringForKeyName])
-};
+import React from 'react';
 
 // const lineChartConfig = {
 //   type: 'line',

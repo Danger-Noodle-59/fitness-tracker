@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StatsOuterContainer = ({setCalories, setAnimate, setDays, setActivityLevel, weight, goal}) => {
+const StatsOuterContainer = ({setCalories, setAnimate, setDays, setActivityLevel, weight, goal, activityLevel}) => {
     return(
       <div className="stats-outer-container">
         <div className="stats-container">
@@ -34,16 +34,19 @@ const StatsOuterContainer = ({setCalories, setAnimate, setDays, setActivityLevel
               setAnimate(false);
             }}></input>
         </div>
+        
         <div className="stats-container">
           {' '}
           On a scale of <strong>1 - 5</strong> what is your activity level?
           <input
+            id="activity-level-input"
             className="stats-input"
             onChange={(e) => {
               setActivityLevel(Number(e.target.value));
               setAnimate(false);
             }}></input>
         </div>
+        {activityLevel && (activityLevel > 5 || activityLevel < 1) ? <div style={{color:'red'}}>INVALID ACTIVITY LEVEL</div> : null}
       </div>
     );
 }

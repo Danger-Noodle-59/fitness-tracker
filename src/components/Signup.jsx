@@ -31,7 +31,8 @@ const Signup = () => {
       sex: sex,
       height: Number(height),
       weight: Number(weight),
-      goal: Number(goal)
+      goal: Number(goal),
+      data: []
     }
     console.log(obj);
     try {
