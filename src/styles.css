@@ -319,3 +319,14 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(220,246,220,1) 0%, r
 .fetch-plan {
   margin: auto;
 }
+
+#canvas {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 810px) {
+  #canvas {
+    width: 100vw;
+  }
+}
