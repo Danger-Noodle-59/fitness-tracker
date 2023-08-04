@@ -30,19 +30,19 @@ const Navbar = ({ setUpdateWeight,
     return (
         <div className='nav-bar'>
         <div className='nav-bar-component'>{getDate()}</div>
-        <button className='nav-bar-component' id='update-weight-button' onClick={() => setUpdateWeight(!updateWeight)}>UPDATE WEIGHT</button>
+        <button className='nav-bar-component nav-button' id='update-weight-button' onClick={() => setUpdateWeight(!updateWeight)}>UPDATE WEIGHT</button>
         {updateWeight && <input id='weight-input' className='nav-bar-component' type="text" onKeyDown={handleEnterPress} onChange={(e) => { setWeightInput(e.target.value); }} placeholder='Current Weight... '></input>}
 
 
-        <button className='nav-bar-component' id='update-goal-button' onClick={() => setUpdateWeightGoal(!updateWeightGoal)}>UPDATE GOAL</button>
+        <button className='nav-bar-component nav-button' id='update-goal-button' onClick={() => setUpdateWeightGoal(!updateWeightGoal)}>UPDATE GOAL</button>
         {updateWeightGoal && <input id='goal-input' className='nav-bar-component' type="text" onKeyDown={handleEnterPressGoal} onChange={(e) => { setGoalInput(e.target.value); }} placeholder='Current Goal... '></input>}
-        <button className='nav-bar-component' id='history-button' onClick={() =>
+        <button className='nav-bar-component nav-button' id='history-button' onClick={() =>
             location.pathname === '/main/history' ? navigate('/main') : navigate('/main/history')}>{history}</button>
-        <button className='nav-bar-component' id='pics-button' onClick={() =>
+        <button className='nav-bar-component nav-button' id='pics-button' onClick={() =>
         location.pathname === '/main/pics' ? navigate('/main') : navigate('/main/pics')}>{pics}</button>
-        <button className='nav-bar-component' id='pics-button' onClick={() =>
+        <button className='nav-bar-component nav-button' id='plan-button' onClick={() =>
         location.pathname === '/main/gameplan' ? navigate('/main') : navigate('/main/gameplan')}>{gameplan}</button>
-        <div className='nav-bar-component'>{`${firstName} ${lastName}`}</div>
+        <div className='nav-bar-component' id='nav-name'>{`${firstName} ${lastName}`}</div>
         <button className='nav-bar-component' id='log-out-button' onClick={logout}>Log Out</button>
         </div>
     )

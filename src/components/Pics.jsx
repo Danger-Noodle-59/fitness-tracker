@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import DisplayPic from './DisplayPic';
+import UploadPic from './UploadPic';
 
+const Pics = ({imageIDs}) => {
+    const [beforeImgSrc, setBeforeImgSrc] = useState('')
+    const [afterImgSrc, setAfterImgSrc] = useState('')
 
-const Pics = () => {
+    useEffect(() => {
+        console.log(imageIDs, 'salkfj')
+        if (!imageIDs.length) return;
+        imageIDs.forEach((id, i) => {
+        fetch(`/upload/${imageIDs[i]}`)
+            .then(res => res.json())
+            .then(data => i === 0 ? setBeforeImgSrc(data.url) : setAfterImgSrc(data.url))
+            .catch(err => console.error(err))
+        })
+    }, [imageIDs])
+
 
 
 
@@ -9,11 +24,14 @@ const Pics = () => {
         <div id='pics'>
             <div className='pic'>
                 <h2>BEFORE</h2>
-                <img width={300} height={500} src='https://upload.wikimedia.org/wikipedia/en/c/c2/Peter_Griffin.png'/>
+                <DisplayPic key='0' imgSrc={beforeImgSrc} />
+                <UploadPic setImgSrc={setBeforeImgSrc}/>
+                {/* <img width={300} height={500} src='https://upload.wikimedia.org/wikipedia/en/c/c2/Peter_Griffin.png'/> */}
             </div>
             <div className='pic'>
                 <h2>AFTER</h2>
-                <img width={300} height={500} src='https://familyguyaddicts.files.wordpress.com/2015/02/handsome-peter.png'/>
+                <DisplayPic key='1' imgSrc={afterImgSrc} />
+                <UploadPic setImgSrc={setAfterImgSrc}/>
             </div>
         </div>
         

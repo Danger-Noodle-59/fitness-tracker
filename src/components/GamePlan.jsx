@@ -4,13 +4,13 @@ import { GamePlanForm } from './GamePlanForm';
 import Plan from './Plan';
 import SelectPlanType from './SelectPlanType';
 
-const GamePlan = ({age, sex, weight, goal, days, activityLevel}) => {
+const GamePlan = ({age, sex, weight, goal, days, activityLevel, gptResponse, setGptResponse}) => {
     const [planType, setPlanType] = useState('');
-    const [gptResponse, setGptResponse] = useState(null);
+    // const [gptResponse, setGptResponse] = useState(null);
 
     return (
         <Routes>
-            <Route path={'/'} element={gptResponse ? <Plan gptResponse={gptResponse} /> : <SelectPlanType setPlanType={setPlanType}/>} />
+            <Route path={'/'} element={gptResponse ? <Plan gptResponse={gptResponse} setGptResponse={setGptResponse} /> : <SelectPlanType setPlanType={setPlanType}/>} />
             <Route path={'/planForm'} element={<GamePlanForm
                 planType={planType} 
                 setGptResponse={setGptResponse}
