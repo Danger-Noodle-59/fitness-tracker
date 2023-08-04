@@ -551,3 +551,16 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(220,246,220,1) 0%, r
     flex-direction: column;
   }
 }
+
+.weight-date-boxes > input {
+  height: 5vh;
+  width: 20vw;
+}
+
+body {
+  background: url("/noodles.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

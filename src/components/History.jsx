@@ -132,7 +132,7 @@ const Test = () => {
           value={weightAndDate.date}
           onChange={handleDateInputChange}
         />
-        <button className='weight-date-input' id='update-weight' onClick={someFunc}>
+        <button className='weight-date-input fetch-plan' id='update-weight' onClick={someFunc}>
           ADD
         </button>
       </div>
