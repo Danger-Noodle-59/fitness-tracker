@@ -34,6 +34,8 @@ const Dashboard = () => {
   const gainWeight = goal > weight ? true : false;
   const [gptResponse, setGptResponse] = useState(null);
   const [imageIDs, setImageIDs] = useState([]);
+  const [beforeImgSrc, setBeforeImgSrc] = useState('')
+  const [afterImgSrc, setAfterImgSrc] = useState('')
   let dailyGainCalories;
   let dailyBurnCalories;
 
@@ -229,6 +231,10 @@ const Dashboard = () => {
           />} />
           <Route path='/pics' element={
             <Pics imageIDs={imageIDs}
+              beforeImgSrc={beforeImgSrc}
+              setBeforeImgSrc={setBeforeImgSrc}
+              afterImgSrc={afterImgSrc}
+              setAfterImgSrc={setAfterImgSrc}
           />} />
           <Route path='/gameplan/*' element={
             <GamePlan

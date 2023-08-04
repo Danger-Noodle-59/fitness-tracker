@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react';
 import DisplayPic from './DisplayPic';
 import UploadPic from './UploadPic';
 
-const Pics = ({imageIDs}) => {
-    const [beforeImgSrc, setBeforeImgSrc] = useState('')
-    const [afterImgSrc, setAfterImgSrc] = useState('')
+const Pics = ({imageIDs, beforeImgSrc, setBeforeImgSrc, afterImgSrc, setAfterImgSrc}) => {
 
     useEffect(() => {
         console.log(imageIDs, 'salkfj')

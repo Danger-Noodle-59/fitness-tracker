@@ -59,7 +59,7 @@ const Test = () => {
           // console.log(date);
           // console.log(date instanceof Date);
           const dateFromDB = Number(date.getDate()) + 1
-          return 1 + date.getMonth() + '/' + dateFromDB;
+          return dateFromDB !== 32 ? 1 + date.getMonth() + '/' + dateFromDB : 2 + date.getMonth() + '/' + 1;
         });
         console.log('chartLabels', chartLabels)
         const newData = []

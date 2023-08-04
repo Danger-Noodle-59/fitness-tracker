@@ -529,8 +529,25 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(220,246,220,1) 0%, r
   height: 100%;
 }
 
-@media only screen and (max-width: 810px) {
-  #canvas {
+@media only screen and (max-width: 680px) {
+  #select-plan-type {
     width: 100vw;
+    overflow: auto;
+  }
+  #plan-images-container {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8em;
+  }
+  #choose-plan {
+    flex-direction: column;
+    padding-top: 10em;
+    padding-bottom: 2em;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  #pics {
+    flex-direction: column;
   }
 }
