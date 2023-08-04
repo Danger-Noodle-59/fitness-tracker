@@ -1,4 +1,7 @@
 const express = require('express');
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -28,6 +31,23 @@ mongoose.connect(mongoURI, {
 })
   .then(() => console.log('Connected to Mongo DB.'))
   .catch(err => console.log(err));
+          
+cloudinary.config({ 
+  cloud_name: 'do9x1o3zv', 
+  api_key: '673986778621281', 
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'fitness-tracker',
+    format: async (req, file) => 'png',
+  },
+});
+
+const upload = multer({ storage: storage });
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -92,6 +112,9 @@ app.post('/gpt', async (req, res, next) => {
   res.status(200).json({ message: res.locals.message });
 });
 
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.json(req.file);
+})
 
 app.use((req, res) => res.status(404).send('Error page not found'))
 

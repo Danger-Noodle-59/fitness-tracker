@@ -32,6 +32,10 @@ const Dashboard = () => {
   const [negativeCalories, setNegativeCalories] = useState(false);
   const navigate = useNavigate();
   const gainWeight = goal > weight ? true : false;
+  const [gptResponse, setGptResponse] = useState(null);
+  const [imageIDs, setImageIDs] = useState([]);
+  const [beforeImgSrc, setBeforeImgSrc] = useState('')
+  const [afterImgSrc, setAfterImgSrc] = useState('')
   let dailyGainCalories;
   let dailyBurnCalories;
 
@@ -45,6 +49,7 @@ const Dashboard = () => {
       setGoal(data.goal);
       setFirstName(data.firstName);
       setLastName(data.lastName);
+      setImageIDs(data.imageIDs || [])
     }).catch(error => {
       console.log(error);
     })
@@ -225,7 +230,11 @@ const Dashboard = () => {
             <History 
           />} />
           <Route path='/pics' element={
-            <Pics
+            <Pics imageIDs={imageIDs}
+              beforeImgSrc={beforeImgSrc}
+              setBeforeImgSrc={setBeforeImgSrc}
+              afterImgSrc={afterImgSrc}
+              setAfterImgSrc={setAfterImgSrc}
           />} />
           <Route path='/gameplan/*' element={
             <GamePlan
@@ -235,6 +244,8 @@ const Dashboard = () => {
               goal={goal}
               days={days}
               activityLevel={activityLevel}
+              gptResponse={gptResponse}
+              setGptResponse={setGptResponse}
           />} />
         </Routes>
       </div>
