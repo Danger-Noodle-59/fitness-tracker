@@ -49,7 +49,10 @@ module.exports = {
       '/stats': 'http://localhost:3000',
       '/main': 'http://localhost:3000',
       '/signup': 'http://localhost:3000',
-      '/logout': 'http://localhost:3000'
+      '/logout': 'http://localhost:3000',
+      '/gpt': 'http://localhost:3000',
+      '/logs': 'http://localhost:3000',
+      '/upload': 'http://localhost:3000'
       // add more as we add more endpoints
     }
   }

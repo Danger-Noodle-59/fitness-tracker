@@ -16,6 +16,12 @@ cookieController.setSSIDCookie = (req, res, next) => {
 }
 
 cookieController.removeSSIDCookie = (req, res, next) => {
+  if (!req.cookies.ssid) {
+    return next({
+        log: 'error in cookieController.removeSSIDCookie',
+        message: { err: 'No ssid cookie to remove' },
+    });
+  }
   try {
     res.clearCookie('ssid');
     return next();

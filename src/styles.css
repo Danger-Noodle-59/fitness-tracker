@@ -1,6 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
-  font-family: 'Roboto', sans-serif;;
+  font-family: 'Roboto', sans-serif;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -17,7 +23,7 @@ body {
   align-items: center;
   border: 1px solid black;
   padding: 20px;
-  width: 400px;
+  width: 440px;
   border-radius: 20px;
   background: rgb(0,36,11);
   background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgb(171, 245, 171) 0%, rgba(227,254,208,1) 100%, rgba(103,242,2,1) 100%);
@@ -26,6 +32,7 @@ body {
 .login-text {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin-top: 0px;
+  text-align: center;
 }
 
 .login-pic {
@@ -75,6 +82,17 @@ body {
 background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(170,255,241,1) 0%, rgba(255,255,255,1) 97%);
 }
 
+@media only screen and (max-width: 450px) {
+  .login-container {
+    width: 100vw;
+    height: 100vh;
+    /* justify-content: space-between; */
+  }
+  /* .login-text {
+    text-align: center;
+  } */
+}
+
 #signup-button {
   background-color: rgb(132, 252, 196);
   background: rgb(0,36,11);
@@ -109,9 +127,10 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(171,255,170,1) 0%, r
 
 .main-container {
   display: flex;
+  justify-content: center;
   border-style: solid;
-  width: 85vh;
-  height: 57vh;
+  width: 90vh;
+  height: 75vh;
   padding: 10px;
   border-radius: 10px;
   background-color: white;
@@ -119,6 +138,7 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(171,255,170,1) 0%, r
   box-shadow: 1px 1px 3px rgb(0, 0, 0);
   background: rgb(0,36,11);
   background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(220,246,220,1) 0%, rgba(255,255,255,1) 91%);
+  overflow: auto;
 }
 
 .stats-outer-container {
@@ -183,12 +203,58 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(171,255,170,1) 0%, r
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
-  height: 3vh;
+  height: 4.5vh;
   border-width: 1px;
   box-shadow: 1px 1px 3px rgb(0, 0, 0);
   background: rgb(0,36,11);
 background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(220,246,220,1) 0%, rgba(255,255,255,1) 91%);
   
+}
+
+@media only screen and (max-width: 785px) {
+  #root > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-bar {
+    height: 30vh;
+    width: 100vw;
+    flex-wrap: wrap;
+    margin: 5px;
+  }
+  .nav-bar-component {
+    font-size: 1.5em;
+  }
+  .main-container {
+    width: 100vw;
+    height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 467px) {
+    .nav-bar {
+      height: 20vh;
+    }
+    .main-container {
+      height: 80vh;
+      flex-direction: column;
+      padding: 0;
+      overflow: auto;
+    }
+    .stats-container, .calc-container {
+      width: 100vw;
+    }
+    .stats-outer-container {
+      padding-bottom: 5px;
+      margin: 0;
+      gap: 2px;
+    }
+    .stats-input {
+      font-size: 1.5em;
+      margin: 0;
+      width: 50vw;
+    }
 }
 
 .nav-bar-component {
@@ -200,16 +266,23 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(220,246,220,1) 0%, r
   border: none;
 }
 
-#update-weight-button {
+.nav-button {
   background-color: transparent;
   border: none;
   color: blue;
 }
 
-#update-weight-button:hover {
+.nav-button:hover {
   cursor: pointer;
   text-decoration: underline;
 }
+
+#nav-name {
+  font-size: large;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
 
 #weight-input {
   border-style: solid;
@@ -217,17 +290,6 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(220,246,220,1) 0%, r
   border-radius: 5px;
   width: 150px;
   text-align: center;
-}
-
-#update-goal-button {
-  background-color: transparent;
-  border: none;
-  color: blue;
-}
-
-#update-goal-button:hover {
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 #goal-input {
@@ -288,4 +350,217 @@ background: linear-gradient(90deg, rgba(0,36,11,1) 0%, rgba(220,246,220,1) 0%, r
   border-radius: 10px;
   border-width: 1px;
   margin-bottom: 5px;
+}
+
+#pics {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 610px) {
+  #pics {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+
+}
+
+#select-plan-type {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#choose-plan {
+  margin-top: 5vh;
+  display:flex;
+  justify-content: center;
+}
+#plan-header {
+  margin-top: 3vh;
+  font-family: 'Roboto', sans-serif;
+  font-size: 10vh;
+  text-align: center;
+}
+.planBtns {
+  margin: 0 1vw;
+  font-size: 3vw;
+  height: 8vw;
+  width: 35vh;
+  border-radius: 1vh;
+  background-color: yellow;
+  font-family: 'Roboto', sans-serif;
+}
+#plan-images-container{
+  display:flex;
+  margin-top: 5vh;
+  justify-content: center;
+  gap: 5vh;
+  width: 40vh;
+  height: 30vh;
+}
+
+.plan-images {
+  height: 25vh;
+  width: 35vh;
+  border-radius: 3vh;
+}
+.planBtns:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+
+#plan {
+  display: flex;
+  flex-direction: column;
+}
+
+#plan-title {
+  display: flex;
+  justify-content: space-around;
+}
+
+#plan-title > button {
+  border-radius: 10px;
+  font-size: 1.5em;
+  color: white;
+  background-color: rgb(165,248,157);
+  padding: .25em;
+}
+
+#gameplan-container {
+  align-self:center;
+  display: flex;
+  width: 90%;
+  height: 90%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; /* This will evenly distribute the available space around the items */
+  border: .1vh solid black;
+  border-radius: 1vh;
+  padding: 2rem; /* Add some space inside the container */
+}
+
+.gameplan-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(50px, auto);
+  grid-template-rows: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center; /* This will center the items horizontally */
+  border: 1px solid black;
+  height: 20vh;
+  width: 40vh;
+  border-radius: 1vh;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  column-gap: 3rem;
+  padding: 1rem; /* This adds space between the border and the items */
+}
+
+
+.gameplan-form div {
+  font-size: 2vh; /* Increase the font size */
+  font-style: italic;
+  font-family: 'Roboto', sans-serif;
+}
+
+.gameplan-title {
+  font-size: 5vh; /* Increase the title size */
+  margin-bottom: 0; /* Add space below the title */
+  text-align: center;
+}
+
+.fetch-plan {
+  background-color: red; /* Green */
+  color: white;
+  padding: 15px 32px;
+  height: 5vh;
+  width: 25vh;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px; /* Increase button font size */
+  margin-top: 5vh;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.fetch-plan:hover {
+  background-color: red;
+  transform: scale(1.2);
+
+}
+
+#fitness-expertise {
+  margin-top: 2rem; /* Add space above the expertise section */
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 20px;
+}
+#expertise-title {
+  font-size: 3vh;
+}
+#expertise {
+  margin-top: 3vh;
+  font-size: 3vh;
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 680px) {
+  #select-plan-type {
+    width: 100vw;
+    overflow: auto;
+  }
+  #plan-images-container {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8em;
+  }
+  #choose-plan {
+    flex-direction: column;
+    padding-top: 10em;
+    padding-bottom: 2em;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  #pics {
+    flex-direction: column;
+  }
+}
+
+.weight-date-boxes > input {
+  height: 5vh;
+  width: 20vw;
+}
+
+body {
+  background: url("/noodles.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

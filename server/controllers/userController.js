@@ -1,5 +1,5 @@
 const userController = {};
-const { User } = require('../models/userModel')
+const User  = require('../models/userModel')
 
 userController.verifyUser = (req, res, next) => {
 // we will be recieving username and password in the request body. check if username exists and if so check if password matches. If match set authenticated to true in res.locals and pass along to next middleware. otherwise call global error handler with message user not authenticated and status code 401.
@@ -34,24 +34,25 @@ userController.verifyUser = (req, res, next) => {
 
 
 userController.createUser = (req, res, next) => {
-    const { username, password, firstName, lastName, age, sex, height, weight, goal} = req.body;
+    const { username, password, firstName, lastName, age, sex, height, weight, goal, data} = req.body;
 
     if (!username || !password || !firstName || !lastName)
     return next({
         log: 'Missing username/password in UserController.createUser',
         message : {err: 'An error occured'}
     })
-    User.create({ 
-        username, 
-        password, 
-        firstName, 
-        lastName, 
-        age, 
+    User.create({
+        username,
+        password,
+        firstName,
+        lastName,
+        age,
         sex,
         height,
         weight,
         goal,
-    }) 
+        data,
+    })
     .then((user) => {
         res.locals._id = user._id;
         return next();
@@ -63,8 +64,5 @@ userController.createUser = (req, res, next) => {
         });
     });
 };
-
-
-
 
 module.exports = userController;
